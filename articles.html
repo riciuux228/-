@@ -1,0 +1,106 @@
+<!-- articles.html 是文章管理页面的 HTML 结构，包含文章筛选表单、文章列表、分页控件等。 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入图标库（例如 Font Awesome） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入分离的CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/articles.css">
+</head>
+
+<body>
+    <!-- 动态加载侧边栏 -->
+    <div id="sidebar-container">
+        <!-- Sidebar content will be loaded here dynamically -->
+    </div>
+
+    <div id="content">
+        <!-- 文章管理部分 -->
+        <section class="articles-section">
+            <h1>文章管理</h1>
+
+            <!-- 筛选表单 -->
+            <form id="filter-form" class="filter-form">
+                <div class="filter-group">
+                    <label for="filter-id">文章ID:</label>
+                    <input type="text" id="filter-id" name="id" placeholder="输入文章ID">
+                </div>
+                <div class="filter-group">
+                    <label for="filter-author">作者:</label>
+                    <input type="text" id="filter-author" name="author" placeholder="输入作者名">
+                </div>
+                <div class="filter-group">
+                    <label for="filter-title">标题:</label>
+                    <input type="text" id="filter-title" name="title" placeholder="输入标题">
+                </div>
+                <div class="filter-group">
+                    <label for="filter-category">分类名称:</label>
+                    <input type="text" id="filter-category" name="category_name" placeholder="输入分类名称">
+                </div>
+                <div class="filter-actions">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> 搜索</button>
+                    <button type="button" id="reset-filters" class="btn btn-secondary"><i class="fas fa-undo"></i>
+                        重置</button>
+                    <!-- 添加批量删除按钮 -->
+                    <button type="button" id="batch-delete" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+                        批量删除</button>
+                    <!-- 添加“添加文章”按钮 -->
+                    <button type="button" id="add-article" class="btn btn-success"><i class="fas fa-plus"></i>
+                        添加文章</button>
+                </div>
+            </form>
+
+            <!-- 文章表格 -->
+            <div class="table-container">
+                <table class="articles-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="select-all">
+                            </th>
+                            <th>文章ID</th>
+                            <th>标题</th>
+                            <th>作者</th>
+                            <th>分类</th>
+                            <th>是否展示</th>
+                            <th>是否置顶</th>
+                            <th>点击数</th>
+                            <th>添加时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="articles-tbody">
+                        <!-- 动态加载文章数据 -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 分页控件 -->
+            <div class="pagination" id="pagination">
+                <!-- 动态生成分页按钮 -->
+            </div>
+        </section>
+    </div>
+
+    <!-- 引入 SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- 引入配置、逻辑、权限逻辑 -->
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/check_Permissions.js"></script>
+    <!-- 引入文章管理逻辑 -->
+
+    <script src="js/articles.js"></script>
+
+</body>
+
+</html>

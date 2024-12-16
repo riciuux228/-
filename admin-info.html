@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员信息</title>
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin-info.css"> <!-- 添加样式表 -->
+</head>
+
+<body>
+    <div id="sidebar-container">
+        <h2>管理面板</h2>
+        <ul>
+            <li><a href="/admin/comments"><i class="fas fa-comments"></i> 评论管理</a></li>
+            <li><a href="/admin/users"><i class="fas fa-users"></i> 用户管理</a></li>
+            <li><a href="/admin/info"><i class="fas fa-user"></i> 管理员信息</a></li>
+            <!-- 添加更多菜单项 -->
+        </ul>
+    </div>
+
+    <div id="content">
+        <h1>管理员信息</h1>
+        <div id="admin-info" class="info-card">
+            <img src="https://tse4-mm.cn.bing.net/th/id/OIP-C.TIElyUlFJsyKMKJXgSlixAAAAA?w=191&h=191&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                alt="管理员头像">
+            <div class="info-group">
+                <label>用户名:</label>
+                <span id="admin-username">Loading...</span>
+            </div>
+            <div class="info-group">
+                <label>手机号:</label>
+                <span id="admin-phone">Loading...</span>
+            </div>
+            <div class="info-group">
+                <label>角色:</label>
+                <span id="admin-role">Loading...</span>
+            </div>
+            <div class="info-group">
+                <label>手机已验证:</label>
+                <span id="admin-verified">Loading...</span>
+            </div>
+            <div class="info-group">
+                <label>创建时间:</label>
+                <span id="admin-created-at">Loading...</span>
+            </div>
+            <button id="edit-admin" class="btn btn-primary"><i class="fas fa-edit"></i> 编辑信息</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/admin-info.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+:root {
+    --sidebar-bg: #2c3e50;
+    --sidebar-hover-bg: #34495e;
+    --primary-color: #3498db;
+    --text-color: #ecf0f1;
+    --content-bg: #ecf0f1;
+    --content-text: #2c3e50;
+    --font-family: 'Roboto', sans-serif;
+    --avatar-size: 50px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--content-bg);
+}
+
+/* 侧边栏样式 */
+#sidebar {
+    width: 220px;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #7f8c8d;
+}
+
+#user-info img {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+#user-info .username {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+#sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#sidebar ul {
+    list-style: none;
+    flex-grow: 1;
+}
+
+#sidebar ul li {
+    margin-bottom: 15px;
+}
+
+#sidebar ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+#sidebar ul li a:hover {
+    background-color: var(--sidebar-hover-bg);
+    transform: translateX(5px);
+}
+
+#sidebar ul li a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* 二级菜单样式 */
+.submenu {
+    display: none;
+    padding-left: 20px;
+}
+
+.submenu li {
+    margin-bottom: 10px;
+}
+
+.submenu li a {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+/* 二级菜单展开时显示 */
+.submenu-active .submenu {
+    display: block;
+}
+
+/* 一级菜单带有子菜单的标记 */
+.has-submenu>a::after {
+    content: '▼';
+    font-size: 0.6rem;
+    margin-left: auto;
+    transition: transform 0.3s;
+}
+
+/* 展开的箭头旋转 */
+.submenu-active>a::after {
+    transform: rotate(180deg);
+}
+
+/* 退出登录样式 */
+#logout {
+    padding-top: 20px;
+    border-top: 1px solid #7f8c8d;
+}
+
+#logout a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+#logout a:hover {
+    background-color: var(--sidebar-hover-bg);
+    transform: translateX(5px);
+}
+
+#content {
+    flex-grow: 1;
+    padding: 40px;
+    background-color: var(--content-bg);
+    color: var(--content-text);
+    margin-left: 220px;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+        position: relative;
+    }
+
+    #content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    #user-info {
+        justify-content: center;
+    }
+}
+
+#sidebar,
+#content {
+    transition: all 0.3s ease;
+}

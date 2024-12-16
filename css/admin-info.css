@@ -1,0 +1,124 @@
+/* admin-info.css */
+
+/* 基本布局和样式 */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    /* 背景色 */
+    margin: 0;
+}
+
+/* 侧边栏样式 */
+#sidebar-container {
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: fixed;
+    /* 固定位置 */
+    height: 100%;
+}
+
+#sidebar-container h2 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+/* 主内容区域 */
+#content {
+    margin-left: 260px;
+    /* 留出侧边栏的空间 */
+    padding: 20px;
+}
+
+/* 标题样式 */
+h1 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* 信息卡片样式 */
+.info-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* 左对齐 */
+    gap: 15px;
+    /* 间隔 */
+}
+
+#admin-icon {
+    width: 100px;
+    /* 头像宽度 */
+    height: 100px;
+    /* 头像高度 */
+    border-radius: 50%;
+    /* 圆形头像 */
+    object-fit: cover;
+    /* 保持比例，裁剪 */
+}
+
+.info-group {
+    display: flex;
+    justify-content: space-between;
+    /* 左右对齐 */
+    width: 100%;
+    /* 满宽度 */
+}
+
+.info-group label {
+    font-weight: 600;
+    /* 粗体 */
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #357ab8;
+    /* 悬停时的颜色 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #sidebar-container {
+        display: none;
+        /* 小屏幕时隐藏侧边栏 */
+    }
+
+    #content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .info-card {
+        padding: 15px;
+    }
+
+    #admin-icon {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.avatar {
+    width: 100px;
+    /* 固定宽度 */
+    height: 100px;
+    /* 固定高度 */
+    border-radius: 50%;
+    /* 圆形 */
+    object-fit: cover;
+    /* 确保图像覆盖区域 */
+}

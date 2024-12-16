@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>角色管理</title>
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/role-management.css">
+</head>
+
+<body>
+    <!-- 侧边栏 -->
+    <div id="sidebar-container">
+        <h2>管理面板</h2>
+        <!-- 侧边栏内容 -->
+        <ul>
+            <li><a href="/admin/comments"><i class="fas fa-comments"></i> 评论管理</a></li>
+            <li><a href="/admin/users"><i class="fas fa-users"></i> 用户管理</a></li>
+            <li><a href="/admin/authors"><i class="fas fa-user-tie"></i> 作者管理</a></li>
+            <li><a href="/admin/roles"><i class="fas fa-user-shield"></i> 角色管理</a></li>
+            <!-- 添加更多菜单项 -->
+        </ul>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div id="content">
+        <h1>角色管理</h1>
+        <!-- 用户筛选表单 -->
+        <form id="filter-form" class="filter-form">
+            <div class="filter-group">
+                <label for="filter-user-id">用户ID:</label>
+                <input type="text" id="filter-user-id" name="user_id" placeholder="输入用户ID">
+            </div>
+            <div class="filter-group">
+                <label for="filter-username">用户名:</label>
+                <input type="text" id="filter-username" name="username" placeholder="输入用户名">
+            </div>
+            <div class="filter-group">
+                <label for="filter-phone">手机号码:</label>
+                <input type="text" id="filter-phone" name="phone" placeholder="输入手机号码">
+            </div>
+            <div class="filter-group">
+                <label for="filter-role">角色:</label>
+                <select id="filter-role" name="role">
+                    <option value="">全部</option>
+                    <option value="visitor">访客</option>
+                    <option value="user">用户</option>
+                    <option value="author">作者</option>
+                    <option value="admin">管理员</option>
+                </select>
+            </div>
+            <div class="filter-actions">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> 搜索</button>
+                <button type="button" id="reset-filters" class="btn btn-secondary"><i class="fas fa-undo"></i>
+                    重置</button>
+                <!-- 可选：批量更新角色按钮 -->
+                <button type="button" id="update-roles" class="btn btn-warning"><i class="fas fa-user-edit"></i>
+                    批量更新角色</button>
+            </div>
+        </form>
+
+        <!-- 角色用户表格 -->
+        <div class="table-container">
+            <table class="roles-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
+                        <th>ID</th>
+                        <th>用户名</th>
+                        <th>手机号码</th>
+                        <th>角色</th>
+                        <th>注册时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="roles-tbody">
+                    <!-- 动态加载用户数据 -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 分页控件 -->
+        <div id="pagination" class="pagination">
+            <!-- 动态加载分页控件 -->
+        </div>
+    </div>
+
+    <!-- 引入SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <!-- 引入配置、逻辑、权限逻辑 -->
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/role-management.js"></script>
+</body>
+
+</html>

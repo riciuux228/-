@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑/添加文章</title>
+    <!-- 引入 Google 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入图标库（例如 Font Awesome） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入 Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/articles.css">
+</head>
+
+
+<body>
+    <!-- 动态加载侧边栏 -->
+    <div id="sidebar-container" class="d-flex flex-column p-3 bg-light" style="width: 280px;">
+        <button id="logout-btn" class="btn btn-danger mb-3">退出登录</button>
+    </div>
+
+    <div id="content" class="container-fluid">
+        <section class="article-edit-section mt-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h1 class="h5 mb-0">编辑/添加文章</h1>
+                </div>
+                <div class="card-body">
+
+                    <form id="article-form" class="needs-validation" novalidate>
+                        <div class="mb-3">
+                            <label for="article-image" class="form-label">文章主图:</label>
+                            <div id="article-image-container" class="mb-2">
+                                <img id="current-article-image" src="" alt="文章主图" class="img-fluid"
+                                    style="max-width: 200px; display: none;">
+                                <button type="button" id="replace-article-image"
+                                    class="btn btn-outline-secondary mt-2">替换主图</button>
+                            </div>
+                            <input type="file" id="article-image" name="article_image" class="form-control"
+                                accept="image/*" style="display: none;">
+                        </div>
+
+
+
+                        <div class="mb-3">
+                            <label for="title" class="form-label">标题:</label>
+                            <input type="text" id="title" name="title" class="form-control" required>
+                            <div class="invalid-feedback">请输入文章标题。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="author" class="form-label">作者:</label>
+                            <input type="text" id="author" name="author" class="form-control" required>
+                            <div class="invalid-feedback">请输入作者名称。</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="category" class="form-label">分类:</label>
+                            <select id="category" name="category" class="form-select" required>
+                                <option value="">请选择分类</option>
+                            </select>
+                            <div class="invalid-feedback">请选择分类。</div>
+                        </div>
+
+                        <!-- 关键字 -->
+                        <div class="mb-3">
+                            <label for="keywords" class="form-label">关键字:</label>
+                            <input type="text" id="keywords" name="keywords" class="form-control" required>
+                            <div class="invalid-feedback">请输入关键字。</div>
+                        </div>
+                        <!-- 描述 -->
+                        <div class="mb-3">
+                            <label for="description" class="form-label">描述:</label>
+                            <input type="text" id="description" name="description" class="form-control" required>
+                            <div class="invalid-feedback">请输入简短描述。</div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="content" class="form-label">内容:</label>
+                            <div id="editor" class="border"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="is_show" class="form-label">是否展示:</label>
+                            <select id="is_show" name="is_show" class="form-select">
+                                <option value="true">是</option>
+                                <option value="false">否</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="is_top" class="form-label">是否置顶:</label>
+                            <select id="is_top" name="is_top" class="form-select">
+                                <option value="true">是</option>
+                                <option value="false">否</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="attachments" class="form-label">附件:</label>
+                            <input type="file" id="attachments" name="attachments" class="form-control" multiple>
+                            <ul id="attachments-list" class="list-group mt-2"></ul>
+                        </div>
+
+                        <label for="attachments" class="form-label">已上传的附件:</label>
+                        <ul id="attachments-list" class="list-group mb-3">
+                            <!-- Attachments will be dynamically added here -->
+                        </ul>
+                        <input type="file" id="attachments" name="attachments" class="form-control" multiple>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="button" id="cancel" class="btn btn-secondary me-2"><i class="fas fa-ban"></i>
+                        取消</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> 保存文章</button>
+                </div>
+                </form>
+            </div>
+    </div>
+    </section>
+    </div>
+
+
+    <!-- 引入 SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- 引入 Quill -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <!-- 引入配置、逻辑、权限、退出逻辑 -->
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/check_Permissions.js"></script>
+
+    <!-- 初始化 Quill 富文本编辑器 -->
+    <script>
+        var quill = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                toolbar: [
+                    [{ 'header': [1, 2, false] }],
+                    ['bold', 'italic', 'underline'],
+                    ['link', 'blockquote', 'code-block', 'image'],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }]
+                ]
+            }
+        });
+    </script>
+
+    <!-- 添加文章保存的脚本逻辑 -->
+    <script src="js/config.js"></script>
+    <script src="js/add-edit-article.js"></script>
+</body>
+
+</html>

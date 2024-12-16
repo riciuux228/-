@@ -1,0 +1,54 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    /* 使用柔和的灰色背景 */
+}
+
+#sidebar-container {
+    height: 100vh;
+    position: fixed;
+}
+
+.article-edit-section {
+    margin-left: 300px;
+    /* 确保内容与侧边栏错开 */
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card-header {
+    border-bottom: none;
+    font-weight: 500;
+}
+
+.btn {
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+#editor {
+    min-height: 200px;
+    /* 设置 Quill 编辑器的最小高度 */
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}

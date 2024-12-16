@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页</title>
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入图标库（例如 Font Awesome） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入分离的CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <!-- 引入 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- 动态加载侧边栏 -->
+    <div id="sidebar-container">
+        <!-- Sidebar content will be loaded here dynamically -->
+    </div>
+
+    <div id="content">
+        <!-- 欢迎部分 -->
+        <section class="welcome-section">
+            <h1>欢迎回来，管理员！</h1>
+            <p>这是您的管理控制台，您可以在这里快速访问和管理所有内容。</p>
+        </section>
+
+        <!-- 统计卡片 -->
+        <section class="stats-cards">
+            <div class="card">
+                <i class="fas fa-newspaper"></i>
+                <div class="card-info">
+                    <h3 id="total-articles">0</h3>
+                    <p>文章总数</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-users"></i>
+                <div class="card-info">
+                    <h3 id="total-users">0</h3>
+                    <p>用户总数</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-comments"></i>
+                <div class="card-info">
+                    <h3 id="total-comments">0</h3>
+                    <p>评论总数</p>
+                </div>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-shield"></i>
+                <div class="card-info">
+                    <h3 id="total-admins">0</h3>
+                    <p>管理员数量</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 图表部分 -->
+        <section class="charts-section">
+            <div class="chart-container">
+                <canvas id="articlesChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="usersChart"></canvas>
+            </div>
+        </section>
+
+        <!-- 最近活动 -->
+        <section class="recent-activities">
+            <h2>最近活动</h2>
+            <ul id="activities-list">
+                <!-- 动态加载活动项 -->
+            </ul>
+        </section>
+    </div>
+
+    <!-- 引入 SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- 引入配置、逻辑、权限逻辑 -->
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/check_Permissions.js"></script>
+
+    <!-- 引入主页逻辑 -->
+    <script src="js/home.js"></script>
+</body>
+
+</html>

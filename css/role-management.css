@@ -1,0 +1,443 @@
+/* role-management.css */
+
+/* 引入全局变量（确保 styles.css 已包含这些变量） */
+@import url('styles.css');
+
+/* 角色管理页面的整体布局 */
+#content {
+    /* 继承自 styles.css 的样式 */
+}
+
+/* 标题样式 */
+h1 {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* 用户筛选表单样式 */
+.filter-form {
+    background-color: var(--card-background);
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 35px;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 250px;
+}
+
+.filter-group label {
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+    outline: none;
+    background-color: #f9f9f9;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+}
+
+.filter-actions {
+    display: flex;
+    gap: 15px;
+    flex: 1 1 200px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+/* 按钮样式 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+    height: 48px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+}
+
+.btn i {
+    font-size: 18px;
+}
+
+/* 主按钮 */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #357ab8;
+    transform: translateY(-2px);
+}
+
+/* 次按钮 */
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #3de0c5;
+    transform: translateY(-2px);
+}
+
+/* 成功按钮 */
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+/* 危险按钮 */
+.btn-danger {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+/* 用户表格样式 */
+.roles-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.roles-table th,
+.roles-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+.roles-table th {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.roles-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.roles-table tr:hover {
+    background-color: var(--hover-bg-color);
+    transform: translateY(-1px);
+    transition: transform var(--transition-speed), background-color var(--transition-speed);
+}
+
+.roles-table th:first-child,
+.roles-table td:first-child {
+    width: 50px;
+}
+
+.roles-table th:last-child,
+.roles-table td:last-child {
+    width: 180px;
+}
+
+/* 操作按钮样式 */
+.roles-table .action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+}
+
+.roles-table .edit-btn {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.roles-table .edit-btn:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
+.roles-table .delete-btn {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+.roles-table .delete-btn:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* 分页控件样式 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pagination .page-btn {
+    padding: 10px 18px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.pagination .page-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.pagination .page-btn.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+
+    /* 隐藏侧边栏 */
+    #sidebar-container {
+        display: none;
+    }
+
+    #content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* 调整表单布局 */
+    .filter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-actions {
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    /* 调整表格字体和内边距 */
+    .roles-table th,
+    .roles-table td {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    /* 调整按钮尺寸 */
+    .btn,
+    .roles-table .action-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .pagination .page-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    /* 调整标题字体 */
+    h1 {
+        font-size: 28px;
+    }
+}
+
+/* 额外的动画和过渡效果 */
+.roles-table tr {
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.roles-table tr:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.action-btn {
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+}
+
+/* 工具提示样式（可选） */
+.action-btn {
+    position: relative;
+}
+
+.action-btn::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--text-color);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-speed);
+    font-size: 14px;
+}
+
+.action-btn:hover::after {
+    opacity: 1;
+}
+
+.action-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--text-color) transparent transparent transparent;
+    opacity: 0;
+    transition: opacity var(--transition-speed);
+}
+
+.action-btn:hover::before {
+    opacity: 1;
+}
+
+/* 优化弹出框的输入布局和视觉层次感 */
+.edit-role-modal .swal-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.edit-role-modal .swal-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #333;
+    font-size: 14px;
+}
+
+.edit-role-modal .swal2-input {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.edit-role-modal .swal2-input:focus {
+    border-color: #5b9bd5;
+    box-shadow: 0 0 5px rgba(91, 155, 213, 0.3);
+}
+
+/* 优化复选框布局 */
+.edit-role-modal .swal-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-role-modal .swal-checkbox-group label {
+    font-size: 14px;
+    color: #333;
+}
+
+/* 调整模态框的整体样式 */
+.edit-role-modal .swal2-popup {
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* 调整按钮样式 */
+.swal2-confirm,
+.swal2-cancel {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+}
+
+.swal2-confirm {
+    background-color: #5b9bd5;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.swal2-confirm:hover {
+    background-color: #4a86c5;
+}
+
+.swal2-cancel {
+    background-color: #f1f1f1;
+    color: #333;
+    transition: background-color 0.3s;
+}
+
+.swal2-cancel:hover {
+    background-color: #e0e0e0;
+}

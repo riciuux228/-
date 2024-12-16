@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章评论管理</title>
+    <!-- 引入Google字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入图标库（例如 Font Awesome） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入分离的CSS -->
+
+    <link rel="stylesheet" href="css/comments.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- 动态加载侧边栏 -->
+    <div id="sidebar-container"></div>
+
+    <!-- 主内容区域 -->
+    <div id="content">
+        <h1>文章评论管理</h1>
+
+        <!-- 筛选表单 -->
+        <form id="filter-form" class="filter-form">
+            <div class="filter-group">
+                <label for="filter-article-id">文章ID:</label>
+                <input type="text" id="filter-article-id" name="article_id" placeholder="输入文章ID">
+            </div>
+            <div class="filter-group">
+                <label for="filter-user-id">用户ID:</label>
+                <input type="text" id="filter-user-id" name="user_id" placeholder="输入用户ID">
+            </div>
+            <div class="filter-group">
+                <label for="filter-content">评论内容:</label>
+                <input type="text" id="filter-content" name="content" placeholder="输入评论关键词">
+            </div>
+            <div class="filter-actions">
+                <button type="submit" class="btn btn-primary">搜索</button>
+                <button type="button" id="reset-filters" class="btn btn-secondary">重置</button>
+            </div>
+        </form>
+
+        <!-- 评论表格 -->
+        <div class="table-container">
+            <table class="comments-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
+                        <th>ID</th>
+                        <th>文章ID</th>
+                        <th>用户ID</th>
+                        <th>评论内容</th>
+                        <th>父评论ID</th>
+                        <th>点赞数</th>
+                        <th>创建时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="comments-tbody">
+                    <!-- 动态加载评论数据 -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 分页控件 -->
+        <div id="pagination" class="pagination"></div>
+    </div>
+
+    <!-- 引入 SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- 引入配置、逻辑、权限、退出逻辑 -->
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/check_Permissions.js"></script>
+    <script src="js/comments.js"></script>
+
+</body>
+
+</html>
